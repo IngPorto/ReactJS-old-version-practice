@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Hello Word React.JS</title>
+    </head>
+    <body>
+        <div id="container"></div>
+        <!-- Con esta solicitud de script agrego React al protecto -->
+        <script src="http://fb.me/react-0.13.3.js"></script>
+        <!-- 
+            Transformer es un elemento de React que permite convertir
+            código JSX a JS/HTML para que lo entiendan los navegadores
+         -->
+        <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
+        <!-- 
+            En versiones anteriores de navegadores se usaba el harmony 
+            para que el navegador entendiera que se va correr código ES6
+        -->
+        <script type="text/jsx;harmony=true">
+            /* 
+            *   El uso de clases es una cualidad de EC6 para JS
+            */
+            class HelloWordComponent extends React.Component{
+                render(){
+                    return <h1> {this.props.name} evoluciona a {this.props.level}</h1>
+                }
+            }
+            // React me permite declarar que una propiedad sea de un 
+            // tipo específico en JS. Por defecto todos son opcional
+            HelloWordComponent.propTypes = {
+                name : React.PropTypes.string,
+                level : React.PropTypes.number,
+            }
+            // Se renderiza el componente con react y se ubica en "container"
+            React.render(<HelloWordComponent name="Lifszyc" level={12} />, document.getElementById("container"));
+        </script>
+
+    </body>
+</html>
