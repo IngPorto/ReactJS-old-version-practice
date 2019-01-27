@@ -106,11 +106,18 @@ var PokeRow = (function (_React$Component) {
     }
 
     _createClass(PokeRow, [{
+        key: 'onClick',
+
+        // Manejo de eventos, con la siguiente función suelta
+        value: function onClick(event) {
+            alert(this.props.name);
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2['default'].createElement(
                 'li',
-                { className: 'pokerow' },
+                { className: 'pokerow', onClick: this.onClick.bind(this) },
                 _react2['default'].createElement(_PokeAvatar2['default'], { number: this.props.number }),
                 this.props.name
             );
