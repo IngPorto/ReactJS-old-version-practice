@@ -4,12 +4,13 @@
 import React, {Component} from 'react'
 import PokeTable from './PokeTable'
 import PokeChat from './PokeChat'
+import uid from 'uid'
 
 class PokeApp extends Component{
     constructor(props){
         super(props);
         this.state = {
-            messages: [{text: "Chat en línea:"}]
+            messages: [{id: uid(), text: "Chat en línea:"}]
         }
         // Realizo un bind desde la instanciación del componente
         // para mandarle el contexto de esta clase 
@@ -24,7 +25,10 @@ class PokeApp extends Component{
     onGrowl(name){
         let text = `${name.slice(0,3)}, ${name}!`
         //let messages = this.state.messages.push({ text: text })
-        this.state.messages.push({ text: text })
+        this.state.messages.push({ 
+            id: uid(), 
+            text: text 
+        })
         this.setState({
             messages: this.state.messages
         })

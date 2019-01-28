@@ -49,6 +49,10 @@ var _PokeChat = require('./PokeChat');
 
 var _PokeChat2 = _interopRequireDefault(_PokeChat);
 
+var _uid = require('uid');
+
+var _uid2 = _interopRequireDefault(_uid);
+
 var PokeApp = (function (_Component) {
     _inherits(PokeApp, _Component);
 
@@ -57,7 +61,7 @@ var PokeApp = (function (_Component) {
 
         _get(Object.getPrototypeOf(PokeApp.prototype), 'constructor', this).call(this, props);
         this.state = {
-            messages: [{ text: "Chat en línea:" }]
+            messages: [{ id: (0, _uid2['default'])(), text: "Chat en línea:" }]
         };
         // Realizo un bind desde la instanciación del componente
         // para mandarle el contexto de esta clase
@@ -74,7 +78,10 @@ var PokeApp = (function (_Component) {
         value: function onGrowl(name) {
             var text = name.slice(0, 3) + ', ' + name + '!';
             //let messages = this.state.messages.push({ text: text })
-            this.state.messages.push({ text: text });
+            this.state.messages.push({
+                id: (0, _uid2['default'])(),
+                text: text
+            });
             this.setState({
                 messages: this.state.messages
             });
@@ -103,7 +110,7 @@ var PokeApp = (function (_Component) {
 exports['default'] = PokeApp;
 module.exports = exports['default'];
 
-},{"./PokeChat":4,"./PokeTable":7,"react":163}],3:[function(require,module,exports){
+},{"./PokeChat":4,"./PokeTable":7,"react":163,"uid":164}],3:[function(require,module,exports){
 /**
  * Componente base de cada personaje
  */
@@ -195,7 +202,7 @@ var PokeChat = (function (_Component) {
                 'ul',
                 null,
                 this.props.messages.map(function (message) {
-                    return _react2['default'].createElement(_PokeMessage2['default'], { message: message });
+                    return _react2['default'].createElement(_PokeMessage2['default'], { key: message.id, message: message });
                 })
             );
         }
@@ -20295,4 +20302,23 @@ module.exports = warning;
 },{"./emptyFunction":122,"_process":8}],163:[function(require,module,exports){
 module.exports = require('./lib/React');
 
-},{"./lib/React":36}]},{},[1]);
+},{"./lib/React":36}],164:[function(require,module,exports){
+/**
+ * Export `uid`
+ */
+
+module.exports = uid;
+
+/**
+ * Create a `uid`
+ *
+ * @param {String} len
+ * @return {String} uid
+ */
+
+function uid(len) {
+  len = len || 7;
+  return Math.random().toString(35).substr(2, len);
+}
+
+},{}]},{},[1]);
