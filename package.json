@@ -3,6 +3,7 @@
     "dependencies": {
         "babelify": "6.1.2",
         "browserify": "10.2.4",
+        "now": "^13.1.2",
         "react": "0.13.3",
         "uid": "0.0.2"
     },
